@@ -14,9 +14,9 @@
 | Dependency Injection |
 | Search |
 
-Launches List                       | Launch Details           |
-:-------------------------:|:-------------------------:|:-------------------------:
-![ScreenShot][Launches List]        | ![ScreenShot][Launch Details] | 
+ Launches List                       | Launch Details           
+ :-------------------------:|:-------------------------:
+![ScreenShot][Launches List]        | ![ScreenShot][Launch Details] 
 
 
 Suggestions accepted :) Feel free to suggest if you are seeing any improvement in the code.
