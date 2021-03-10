@@ -1,0 +1,50 @@
+//
+//  Service.swift
+//  SpaceX
+//
+//  Created by Rajneesh on 08/03/21.
+//  Copyright © 2021 BRRV. All rights reserved.
+//
+
+import Foundation
+
+enum ServiceMethod: String {
+    case get = "GET"
+    // implement more when needed: post, put, delete, patch, etc.
+}
+
+protocol Service {
+    var baseURL: String { get }
+    var path: String { get }
+    var parameters: [String: Any]? { get }
+    var method: ServiceMethod { get }
+}
+
+extension Service {
+    public var urlRequest: URLRequest {
+        guard let url = self.url else {
+            fatalError("URL could not be built")
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        return request
+    }
+
+    private var url: URL? {
+        guard var urlComponents = URLComponents(string: baseURL) else {
+           return nil
+        }
+        urlComponents.path = urlComponents.path + path
+
+        if method == .get {
+            // add query items to url
+            guard let parameters = parameters as? [String: String] else {
+                fatalError("parameters for GET http method must conform to [String: String]")
+            }
+            if parameters.count > 0 {
+                urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+            }
+        }
+        return urlComponents.url
+    }
+}
