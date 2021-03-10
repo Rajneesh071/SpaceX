@@ -2,7 +2,7 @@
 #### This project shows all the rocket launches  of spaceX
 #### Navigation to detail page once user select the item
 
-**URL** : `https://api.spacexdata.com/v2/launches`
+**API Used ** : `https://api.spacexdata.com/v2/launches`
 
 | Things which are coverd in this project. |
 | ------ |
