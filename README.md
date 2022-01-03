@@ -1,6 +1,8 @@
-# SpaceX
+# SpaceX (For learning purpose)
 #### This project shows all the rocket launches  of spaceX
 #### Navigation to detail page once user select the item
+
+https://github.com/r-spacex/SpaceX-API
 
 **API Used ** : `https://api.spacexdata.com/v2/launches`
 

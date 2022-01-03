@@ -29,4 +29,38 @@ class SpaceXViewModel : ObservableObject {
             }
         }
     }
+    
+    
+    // Just for learning, not related to spaceX
+    func uploadData() {
+        guard let data = prepareDataToUpload(yourData: "") else {
+            return
+        }
+        
+        // Just for learning, if you want to see the json string from data
+        guard let prettyPrintedJson = String(data: data, encoding: .utf8) else {
+            print("Error: Couldn't print JSON in String")
+            return
+        }
+        
+        provider.load(service: .uploadData(data)) { result in
+            // Do your stuff
+        }
+    }
+    
+    func prepareDataToUpload(yourData:Any) -> Data? {
+        let uploadValue = "Test" //yourData.uploadName
+        let yourUploadDataModel:UploadDataModel = UploadDataModel(value: uploadValue)
+        
+        guard let jsonData = try? JSONEncoder().encode(yourUploadDataModel) else {
+            print("Error: Trying to convert model to JSON data")
+            return nil
+        }
+        return jsonData
+    }
+    
+}
+// Just for learning, not related to spaceX
+struct UploadDataModel: Codable {
+    let value: String
 }
